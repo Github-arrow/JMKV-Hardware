@@ -1,14 +1,13 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+   
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ Auth::user()->usertype == 'admin' ? route('admin.dashboard') :route('dashboard') }}">
+                {{-- <div class="shrink-0 flex items-center">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -19,31 +18,31 @@
                     {{-- admin links --}}
 
                     @if (Auth::user()->usertype == 'admin')
-                    <x-nav-link class="font-semibold text-xl text-gray-800 leading-tight">
+                    <x-nav-link href="{{ url('admin/dashboard') }}" class="font-semibold text-xl text-gray-800 leading-tight shrink-0 flex items-center" :active="request()->routeIs('admin.dashboard')">
                         <h1>Admin Dashboard</h1>
                     </x-nav-link>
-                    <x-nav-link href="admin/product" :active="request()->routeIs('admin.product')">
-                        {{ __('Product') }}
+                    <x-nav-link href="{{ url('admin/product') }}" :active="request()->routeIs('admin.product')">
+                        {{ __('Products') }}
                     </x-nav-link>
-                    <x-nav-link href="admin/inventory" :active="request()->routeIs('admin.inventory')">
+                    <x-nav-link href="inventory" :active="request()->routeIs('admin.inventory')">
                         {{ __('Inventory') }}
                     </x-nav-link>
-                    <x-nav-link href="admin/sales-list" :active="request()->routeIs('admin.sales-list')">
-                        {{ __('Sales-List') }}
+                    <x-nav-link href="{{url('admin/sale')}}" :active="request()->routeIs('admin.sale')">
+                        {{ __('Sales') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{url('admin/order')}}" :active="request()->routeIs('admin.order')">
+                        {{ __('Orders') }}
                     </x-nav-link>
                     @endif
 
                     {{-- user links --}}
 
                     @if (Auth::user()->usertype == 'user')
-                    <x-nav-link class="font-semibold text-xl text-gray-800 leading-tight">
-                        <h1>Dashboard</h1>
+                    <x-nav-link href="{{ url('dashboard') }}" class="font-semibold text-xl text-gray-800 leading-tight shrink-0 flex items-center" :active="request()->routeIs('user.dashboard')">
+                        <h1>Cashier Dashboard</h1>
                     </x-nav-link>
                     <x-nav-link href="pos" :active="request()->routeIs('user.pos')">
                         {{ __('POS') }}
-                    </x-nav-link>
-                    <x-nav-link href="order" :active="request()->routeIs('user.order')">
-                        {{ __('Order') }}
                     </x-nav-link>
                     <x-nav-link href="inventory" :active="request()->routeIs('user.inventory')">
                         {{ __('Inventory') }}
@@ -133,3 +132,4 @@
         </div>
     </div>
 </nav>
+

@@ -10,4 +10,8 @@ class UserController extends Controller
     public function index(){
         return view('dashboard');
     }
+
+    public function pos(){
+        return view('pos');
+    }
 }
