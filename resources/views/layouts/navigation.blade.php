@@ -30,9 +30,6 @@
                     <x-nav-link href="{{url('admin/sale')}}" :active="request()->routeIs('admin.sale')">
                         {{ __('Sales') }}
                     </x-nav-link>
-                    <x-nav-link href="{{url('admin/order')}}" :active="request()->routeIs('admin.order')">
-                        {{ __('Orders') }}
-                    </x-nav-link>
                     @endif
 
                     {{-- user links --}}

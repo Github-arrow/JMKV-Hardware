@@ -13,5 +13,10 @@ class AdminController extends Controller
         $totalProducts = Product::count();
         return view('admin.dashboard', compact('totalProducts'));
     }
+
+    public function viewInventory() {
+        $products = Product::all();
+        return view('admin.inventory', compact('products'));
+    }
     
 }

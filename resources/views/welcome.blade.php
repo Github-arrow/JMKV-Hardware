@@ -53,7 +53,7 @@
             
             <main>
                 <div class="text-center .img-fluid mt-4 mb-4">
-                    <img  src="/img/image.png"  width="800" alt="">
+                    <img  src="/img/image.png" width="800" alt="">
                 </div>
                 
             </main>

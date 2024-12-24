@@ -12,7 +12,7 @@ class ProductController extends Controller
         $product = Product::orderBy('created_at', 'DESC')->get();
         $products = $product;
         
-        // $product = Product::orderBy('created_at', 'DESC')->paginate(5);
+        $product = Product::orderBy('created_at', 'DESC')->paginate(5);
  
         return view('admin/product', compact('product'));
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
  
-        return view('admin/product', compact('product'));
+        return view('/admin/product', compact('product'));
     }
  
     public function update(Request $request, string $id)
@@ -60,27 +60,5 @@ class ProductController extends Controller
  
         return redirect('/admin/product')->with('success', 'product deleted successfully');
     }
-
-    public function getProductByCode($productCode)
-{
-    $product = Product::where('product_code', $productCode)->first();
     
-    if ($product) {
-        return response()->json([
-            'product_name' => $product->brand,
-            'price' => $product->price
-        ]);
-    }
-
-    return response()->json(['error' => 'Product not found'], 404);
-}
-
-public function searchProducts($query)
-    {
-        $products = Product::where('category', 'like', $query.'%')
-                   ->orWhere('brand', 'like', $query.'%')
-                   ->get(['product_code', 'category', 'brand', 'price']);
-                   
-        return response()->json($products);
-    }
 }

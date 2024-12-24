@@ -9,7 +9,7 @@
                 </div>
                 <hr>
                 <div class="p-6 text-gray-700">
-                    <h1 class="mb-0">You can view <span class="font-semibold">ORDER</span> and print the details</h1>
+                    <h1 class="mb-0">You can view <span class="font-semibold">ORDERS</span> and print the details</h1>
                     <br>
                     +
                     <table class="table table-striped">
